@@ -13,11 +13,11 @@ namespace PracticeBaseball
 
         public void returnRandomComList()
         {
-            int randNum = random.Next(0, 9);    //Debug.WriteLine($"randNum: {randNum}");
+            int randNum = random.Next(0, 9); 
             int saveNum = randNum;
 
             if (comList.Count == 0)
-                comList.Add(saveNum);   //Debug.WriteLine($"저장된 숫자: {randNum}");
+                comList.Add(saveNum); 
 
             else
             {
@@ -25,7 +25,7 @@ namespace PracticeBaseball
 
                 while (IsSame)  // 중복인 경우
                 {
-                    randNum = random.Next(0, 9);    //Console.WriteLine($"다른 숫자 나올때까지 while: {randNum}");
+                    randNum = random.Next(0, 9);
 
                     if (saveNum != randNum)
                         IsSame = false;
