@@ -10,47 +10,20 @@ namespace PracticeBaseball
 {
     class Program
     {
-        static Random random = new Random();
-
         static void Main(string[] args)
         {
-            List<int> comList = new List<int>();
-            bool isNum3 = false;
+            ComputerNumber computer = new ComputerNumber();
+            // 컴퓨터의 번호 3개 출력
+            computer.GetComputerNumber();
 
-            // 컴퓨터 랜덤숫자 3개 출력
-            while (!isNum3)
-            {
-                returnRandomComList(comList);
+            // 플레이어가 정한 번호 3개 출력
 
-                if (comList.Count == 3)
-                    isNum3 = true;
-            }
-            foreach (int com in comList)
-                Console.WriteLine(com);
-        }
+            // 컴퓨터 번호와 플레이어 번호를 비교
+            
 
-        private static void returnRandomComList(List<int> comList)
-        {
-            int randNum = random.Next(0, 9);    //Debug.WriteLine($"randNum: {randNum}");
-            int saveNum = randNum;
-
-            if (comList.Count == 0)
-                comList.Add(saveNum);   //Debug.WriteLine($"저장된 숫자: {randNum}");
-
-            else
-            {
-                bool IsSame = comList.Contains(saveNum);    // 숫자 중복 판단
-
-                while (IsSame)  // 중복인 경우
-                {
-                    randNum = random.Next(0, 9);    //Console.WriteLine($"다른 숫자 나올때까지 while: {randNum}");
-
-                    if (saveNum != randNum)
-                        IsSame = false;
-                }
-
-                comList.Add(randNum);
-            }
+            // 모두 같거나 모두 다르지 않다는 조건 하에  1< 숫자 비교결과 <=2  같으면 Ball, 다르면 Strike
+            // 모두 같으면 3 Ball
+            // 모두 다르면 3 Out ( 숫자 0-9 목록에서 해당 숫자 제거 )
 
         }
     }
