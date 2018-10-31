@@ -11,7 +11,7 @@ namespace PracticeBaseball
         private Random _random = new Random();
 
         // 컴퓨터가 가진 숫자 알려줌   // 콘솔 프린트는 삭제예정
-        public void GetComputerNumber()
+        public List<int> GetComputerNumber(int number=3)
         {
             List<int> comList = new List<int>();
             bool isNum3 = false;
@@ -19,23 +19,29 @@ namespace PracticeBaseball
             // 컴퓨터 랜덤숫자 3개 출력
             while (!isNum3)
             {
-                returnRandomComList(comList);
+                ReturnRandomComList(comList);
 
-                if (comList.Count == 3)
+                if (comList.Count == number)
                     isNum3 = true;
             }
-            IEnumerable<int> comNum = from x in comList orderby x select x;
-            foreach (int com in comList)
-                Console.WriteLine(com);
+
+            // 테스트용. 삭제 예정
+            //foreach (int com in comList)
+            //        Console.WriteLine(com);
+
+            return comList.ToList();
         }
 
         // 컴퓨터의 랜덤번호 3개 선정
-        public void returnRandomComList(List<int> comList)
+        public void ReturnRandomComList(List<int> comList)
         {
-            int randNum = _random.Next(0, 9);
+            int count = 0;
+            int minNum = 0;
+            int maxNum = 9;
+            int randNum = _random.Next(minNum, maxNum);
             int saveNum = randNum;
 
-            if (comList.Count == 0)
+            if (comList.Count == count)
                 comList.Add(saveNum);
 
             else
@@ -44,7 +50,7 @@ namespace PracticeBaseball
 
                 while (IsSame)  // 중복인 경우
                 {
-                    randNum = _random.Next(0, 9);
+                    randNum = _random.Next(minNum, maxNum);
 
                     if (saveNum != randNum)
                         IsSame = false;
@@ -53,5 +59,5 @@ namespace PracticeBaseball
                 comList.Add(randNum);
             }
         }
-        }
+    }
 }
